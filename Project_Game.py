@@ -206,151 +206,111 @@ class enemy():
         print(f'Death message:{random.choice(lst)}')  
         
 #Still in progress    
-def found_enemy():#Completed for now
-    ZZ = enemy('Goblin', 10, 10)
-    MG = enemy('Mage', 20, 20)
-    GM = enemy('Golem', 100 , 15)
-    AM = enemy('Archmage' , 50 , 60)
-    AA = enemy('Archangel', 150 , 100)
-    DR = enemy('Dragon' , 200 , 150)
-    OO = enemy('Eater of dreams', 100000 , 10000)
-    GO = enemy('Horror from the hills', 500000, 500000)
-    n = random.randint(1,112)
-    if n == 1:
+def found_enemy():  # Completed for now
+    enemies = [
+        enemy('Goblin', 10, 10),
+        enemy('Mage', 20, 20),
+        enemy('Golem', 100, 15),
+        enemy('Archmage', 50, 60),
+        enemy('Archangel', 150, 100),
+        enemy('Dragon', 200, 150),
+        enemy('Eater of dreams', 100000, 10000),
+        enemy('Horror from the hills', 500000, 500000)
+    ]
+
+    weights = [20, 20, 20, 20, 20, 10, 1, 1]
+    chosen = random.choices(enemies, weights=weights, k=1)[0]
+    if chosen.name == 'Horror from the hills':
         print("Detecting a Lovecraft class entity in the region. Are you certain whatever you're doing is worth it?")
         if 'Lovecraft class sighted!' not in p1.Achievements:
-            print('Achievement get!:One who saw a lovecraft class entity')
+            print('Achievement get!: One who saw a lovecraft class entity')
             p1.Achievements.append('Lovecraft class sighted!')
-        
-        
-        return GO
-    elif n == 2:#Not an actual comment, but because this event is so rare, it actually took a while to notice the mistake
-        print('Detecting a pseudo-lovecraft class lifeform.Assessment: Extreme threat - Run and you might just survive')
+    elif chosen.name == 'Eater of dreams':
+        print('Detecting a pseudo-lovecraft class lifeform. Assessment: Extreme threat - Run and you might just survive')
         if 'Pseudo-Lovecraft class sighted!' not in p1.Achievements:
-            print('Achievement get!:One who saw a pseudo-lovecraft class entity')
+            print('Achievement get!: One who saw a pseudo-lovecraft class entity')
             p1.Achievements.append('Pseudo-Lovecraft class sighted!')
-        return OO
-    elif 3<= n <= 12:
+    elif chosen.name == 'Dragon':
         print("A dragon has appeared. Good luck, you'll need it")
-        return DR
-    elif 13<= n <= 32:
+    elif chosen.name == 'Archangel':
         print('An archangel has appeared.')
-        return AA
-    elif 33<=n<=52:
+    elif chosen.name == 'Archmage':
         print('An archmage has appeared')
-        return AM
-    elif 53<=n<= 72:
+    elif chosen.name == 'Golem':
         print('A golem has appeared')
-        return GM
-    elif 73<=n<=92:
+    elif chosen.name == 'Mage':
         print('A mage has appeared')
-        return MG
-    elif 93<=n<= 112:
+    elif chosen.name == 'Goblin':
         print("A goblin has appeared")
-        return ZZ
+
+    return chosen
 def found_food():
-    AA = food('Apple', 5)
-    BA = food('Bread', 10)
-    CB = food('Cooked_Beef', 20)
-    MG = food('Mysterious_Gloop', 50)
-    RP = food('Raw_Potato', -5)
-    CP = food('Cursed_Pickle', -30)
-    ES = food('Emotional_support', 100)
-    OC = food('Overcooked_Lasagna', 2)
-    UC = food('Under_cooked_Chicken', -20)
-    ICF = food('Ice_Cream_of_Feelings', 35)
-    CM = food('Cursed_Milk', -50)
-    GU = food('Grandma’s_Unknown_Stew', 200)
-    GD = food('Nectar', 1000)
+    foods = [
+        food('Apple', 5),
+        food('Bread', 10),
+        food('Cooked_Beef', 20),
+        food('Mysterious_Gloop', 50),
+        food('Raw_Potato', -5),
+        food('Cursed_Pickle', -30),
+        food('Emotional_support', 100),
+        food('Overcooked_Lasagna', 2),
+        food('Under_cooked_Chicken', -20),
+        food('Ice_Cream_of_Feelings', 35),
+        food('Cursed_Milk', -50),
+        food('Grandma’s_Unknown_Stew', 200),
+        food('Nectar', 1000)
+    ]
+    weights = [50, 50, 40, 30, 30, 20, 25, 25, 25, 20, 15, 2, 1]
 
-    n = random.randint(1, 401)
-
-    if n == 1:
+    result = random.choices(foods, weights=weights, k=1)[0]
+    name = result.name
+    if name == 'Nectar':
         print("What's this now, Nectar?")
-        result = GD
-    elif n == 2:
+    elif name == 'Grandma’s_Unknown_Stew':
         print("You found Grandma’s Unknown Stew. Smells like memories and mystery.")
-        result = GU
-    elif 3 <= n <= 6:
+    elif name == 'Raw_Potato':
         print("You trip and find a raw potato. Rotton. Cold. Sad. Just like you")
-        result = RP
-    elif 7 <= n <= 20:
-        result = CM
-    elif 21 <= n <= 40:
+    elif name == 'Cursed_Milk':
+        print("You found Cursed Milk. It smells like despair.")
+    elif name == 'Under_cooked_Chicken':
         print("Under-cooked Chicken...Salmonella isn't real.")
-        result = UC
-    elif 41 <= n <= 60:
-        print("A Cursed Pickle rolls toward you.You shouldn't eat it")
-        result = CP
-    elif 61 <= n <= 100:
+    elif name == 'Cursed_Pickle':
+        print("A Cursed Pickle rolls toward you. You shouldn't eat it.")
+    elif name == 'Mysterious_Gloop':
         print("You found Mysterious Gloop. It jiggles ominously.")
-        result = MG
-    elif 101 <= n <= 150:
+    elif name == 'Ice_Cream_of_Feelings':
         print("You found Ice Cream of Feelings. It tastes just like the day your father went to get milk.")
-        result = ICF
-    elif 151 <= n <= 200:
+    elif name == 'Emotional_support':
         print("As opposed to emotional damage?")
-        result = ES
-    elif 201 <= n <= 250:
+    elif name == 'Cooked_Beef':
         print("Someone tossed you a cooked beef. Yummy :).")
-        result = CB
-    elif 251 <= n <= 300:
+    elif name == 'Overcooked_Lasagna':
         print("You discovered a slightly overcooked lasagna. It's... fine.")
-        result = OC
-    elif 301 <= n <= 350:
-        result = BA
-    elif 351 <= n <= 400:
-        result = AA
-    else:
-        print("You trip and find a raw potato. Rotton. Cold. Sad. Just like you")
-        result = RP
 
     print(f"You obtained: {result.name}")
+    return result
+
     
     return result
 def found_weapon():
-    K = weapon('Kindness', 10)
-    IS = weapon('Iron_Sword', 30)
-    DS = weapon('Diamond_Sword', 40)
-    IA = weapon('Iron_Axe', 35)
-    DA = weapon('Diamond_Axe', 45)
-    TP = weapon('Toothpick', 50)
-    B = weapon('Bees', 60)
-    MP = weapon('Shears', 70)
-    PB = weapon('Power_V_Bow', 125)
-    SBS = weapon('Slightly_Bigger_Shears', 300)
-    OO = weapon('Orphan_Obliterator', 500)
-    SP = weapon('Spear_of_the_non_believer', 10**5)
+    weapons = [
+        weapon('Kindness', 10),
+        weapon('Iron_Sword', 30),
+        weapon('Diamond_Sword', 40),
+        weapon('Iron_Axe', 35),
+        weapon('Diamond_Axe', 45),
+        weapon('Toothpick', 50),
+        weapon('Bees', 60),
+        weapon('Shears', 70),
+        weapon('Power_V_Bow', 125),
+        weapon('Slightly_Bigger_Shears', 300),
+        weapon('Orphan_Obliterator', 500),
+        weapon('Spear_of_the_non_believer', 10**5)
+    ]
+    weights = [15, 25, 20, 20, 20, 15, 10, 10, 8, 5, 3, 1]
 
-    n = random.randint(2, 260)
+    result = random.choices(weapons, weights=weights, k=1)[0]
 
-    if n == 2:
-        result = SP
-    elif 3 <= n <= 7:
-        result = K
-    elif 8 <= n <= 17:
-        result = IS
-    elif 18 <= n <= 27:
-        result = IA
-    elif 28 <= n <= 40:
-        result = DS
-    elif 41 <= n <= 55:
-        result = DA
-    elif 56 <= n <= 80:
-        result = TP
-    elif 81 <= n <= 110:
-        result = B
-    elif 111 <= n <= 150:
-        result = MP
-    elif 151 <= n <= 200:
-        result = PB
-    elif 201 <= n <= 250:
-        result = SBS
-    elif 251 <= n <= 260:
-        result = OO
-    else:
-        print("You found... nothing special. Try again.")
-        result = IS
     print(f"You obtained: {result.name} (Damage: {result.damage})")
     return result
 #Used for testing purposes
@@ -569,4 +529,5 @@ print("Game over")
 
         
         
+
 
