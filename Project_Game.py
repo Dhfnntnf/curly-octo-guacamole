@@ -45,7 +45,7 @@ class players():
         
 
     def attack(self, target):
-        if target.hp < 0:
+        if target.hp < 0:#This should not be able to happen
             print('Target is already dead bro')
         else:
             temp = self.hp
@@ -98,7 +98,7 @@ class players():
                     print('Achievement get!:Not your time')
                     print("You've obtained the title:Living legend")
                     self.titles.append('Living_legend')
-                self.hp = 150
+                self.hp = 150#Resets hp, and gives a buff
             if self.hp <= 0:
                 Sedead = True
                 print('You have died, git gud')
@@ -366,7 +366,7 @@ def master_event(event_type, event_name):
         print("Unknown event")
 # Actual game
 name = input('Enter your name: ')
-p1 = players(name , 100 , 20)
+p1 = players(name , 100 , 20) #Starts at 100 hp for balancing
 current_enemy = False
 current_food = False
 current_weapon = False
@@ -529,5 +529,6 @@ print("Game over")
 
         
         
+
 
 
